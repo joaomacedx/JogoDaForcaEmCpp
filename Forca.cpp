@@ -87,7 +87,15 @@ int main ()
 			 	 cout << "Você errou! Seu chute não está na palavra!" <<endl;
 			 	 chutesErrados.push_back(chute);
 			 }
- 	
 	 }
-	
+ 	
+ 	cout << "FIM DE JOGO!" <<endl;
+ 	if (naoAcertou())
+	 {
+	 	cout << "Você perdeu, tente novamente!!" <<endl;
+	 }
+	 else 
+	 {
+	 	cout << "Parabéns você acertou a Palavra Secreta" <<endl;
+	 }
 }
