@@ -40,26 +40,27 @@ bool naoEnforcou()
 	
 }
 
-
-
-int main ()
+void imprimeCabecalho()
 {
-	 setlocale (LC_ALL, "portuguese");
-	 cout << "************************"<<endl;
+ 	cout << "************************"<<endl;
 	 cout << "*     JOGO DA FORCA    *" <<endl;
 	 cout << "************************"<<endl;
 	 cout <<endl;
 
-
-	 while(naoAcertou() && naoEnforcou())
-	 {	 
-	     cout << "Chutes errados: ";
-	     for (char letra : chutesErrados)
+}
+void imprimeErros()
+{
+ 	cout << "Chutes errados: ";
+ 	     for (char letra : chutesErrados)
 		 {
 	     	cout << letra << " ";
 		 }
 		 cout << endl;
-	     for(char letra : PALAVRA_SECRETA)
+}
+
+void imprimePalavra()
+{
+ 	for(char letra : PALAVRA_SECRETA)
 		 {
 	 	 	if (chutou[letra])
 		 	{
@@ -71,9 +72,10 @@ int main ()
 		 	}
 	     } 
 	     cout << endl;
-	     
-	     
-		 char chute;
+}
+void chuta ()
+{
+	 char chute;
 		 cout << "Chute uma letra maiúscula para verificar se ela existe na Palavra Secreta" <<endl;
 		 cin >> chute;
 		 chutou[chute] = true;
@@ -87,12 +89,24 @@ int main ()
 			 	 cout << "Você errou! Seu chute não está na palavra!" <<endl;
 			 	 chutesErrados.push_back(chute);
 			 }
+}
+int main ()
+{
+	 setlocale (LC_ALL, "portuguese");
+	 imprimeCabecalho();
+
+	 while(naoAcertou() && naoEnforcou())
+	 {	 
+	     imprimeErros();
+		 imprimePalavra();	 
+		 chuta();
 	 }
  	
  	cout << "FIM DE JOGO!" <<endl;
  	if (naoAcertou())
 	 {
 	 	cout << "Você perdeu, tente novamente!!" <<endl;
+	 	cout << "A Palavra Secreta era: " << PALAVRA_SECRETA <<endl;
 	 }
 	 else 
 	 {
