@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <fstream>
+#include "palavras.txt"
 
 using namespace std;
 const string PALAVRA_SECRETA = "MELANCIA";
@@ -90,10 +92,24 @@ void chuta ()
 			 	 chutesErrados.push_back(chute);
 			 }
 }
+
+void leArquivo ()
+{
+	ifstream arquivo;
+	arquivo.open("palavras.txt");
+	int quantidadePalavras;
+	arquivo >> quantidadePalavras;
+	for (int i = 0; i < quantidadePalavras; i++)
+	{
+		string palavraLida;
+		arquivo >> palavraLida;
+	}
+}
 int main ()
 {
 	 setlocale (LC_ALL, "portuguese");
 	 imprimeCabecalho();
+	 leArquivo();
 
 	 while(naoAcertou() && naoEnforcou())
 	 {	 
